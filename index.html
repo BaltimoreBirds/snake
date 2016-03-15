@@ -12,12 +12,15 @@
         width: 500px;
         margin: 0 auto;
       }
-      #start{
-        width: 50px;
-        text-align: center;
-        cursor: pointer;
+      .buttonWrap{
+        width: 150px;
         display: block;
         margin: 0 auto;
+        text-align: center;
+      }
+      #start, #end{
+        text-align: center;
+        cursor: pointer;
         border: 1px solid black;
         border-radius: 4px;
       }
@@ -29,19 +32,25 @@
   </head>
   <body>
     <div id="boardWrap">
-      <canvas id="canvas" width="500" height="250"></canvas>
+      <canvas id="gameBoard" width="500" height="250"></canvas>
     </div>
-    <div id="start">Start</div>
+    <div class="buttonWrap">
+      <button id="start">Start</button>&nbsp;&nbsp;<button id="end">End</button>
+    </div>
   </body>
   <script>
     (function(){
       var startButton = document.getElementById("start");
+      var endButton = document.getElementById("end");
 
       startButton.onclick = function(){
-        var board = document.getElementById("canvas");
+        var board = document.getElementById("gameBoard");
         var boardHeight = board.height;
         var boardWidth = board.width;
-        Snake.begin(boardWidth, boardHeight); 
+        SnakeGame.begin(boardWidth, boardHeight);
+      }
+      endButton.onclick = function(){
+        SnakeGame.end();
       }
     })(document);
   </script>
